@@ -14,7 +14,7 @@ int total_Space = 10240000;
 int used_Space = 0;
 
 int temp_Space_Range;
-int choice;
+int mode;
 int temp = 0;
 
 char temp2;
@@ -52,9 +52,9 @@ int main(){
             printf("1. Admin\n2. User\n3. Logout\n");
             puts("-------------------------");
             printf("> ");
-            scanf("%d", &choice);
+            scanf("%d", &mode);
         
-        if(choice == 1){
+        if(mode == 1){
             SV:  
                 if (mysql_query(conn, "SELECT UserID, UserPW, SV FROM users;")) {
                     fprintf(stderr, "%s\n", mysql_error(conn));
@@ -80,9 +80,9 @@ int main(){
                         printf("1. Change Storage Type\n2. Chnage Space Range\n3. User Status\n4. Space Information\n5. Logout\n");
                         puts("-------------------------");
                         printf("> ");
-                        scanf("%d", &choice);
+                        scanf("%d", &mode);
 
-                        switch(choice){
+                        switch(mode){
                             case 1:
                                 printf("Storage Type as... : ");
                                 scanf("%s", storage_Type);
@@ -158,15 +158,15 @@ int main(){
 
                 
         }
-        else if(choice == 2){
+        else if(mode == 2){
             USER:
                 puts("-------------------------");
                 printf("1. Sign Up\n2. Sign In\n3.Return\n");
                 puts("-------------------------");
                 printf("> ");
-                scanf("%d", &choice);
+                scanf("%d", &mode);
 
-               if(choice == 1){
+               if(mode == 1){
                     create:
                     printf("Name ? > ");
                     scanf("%s", UserName);
@@ -192,7 +192,7 @@ int main(){
                         goto create;
                     }
                 }
-                else if(choice == 2){   
+                else if(mode == 2){   
                     if (mysql_query(conn, "SELECT UserID, UserPW FROM users;")) {
                         fprintf(stderr, "%s\n", mysql_error(conn));
                         exit(1);
@@ -216,9 +216,9 @@ int main(){
                                 printf("1. Upload\n2. Delete\n3. Update\n4. Table\n5. Find\n6. Filter\n7. Logout\n");
                                 puts("-------------------------");
                                 printf("> ");
-                                scanf("%d", &choice);
+                                scanf("%d", &mode);
 
-                                switch(choice){
+                                switch(mode){
                                     case 1:
                                         while(1){
                                             UP:
@@ -470,7 +470,7 @@ int main(){
 
 
 
-               }else if(choice == 3){
+               }else if(mode == 3){
 
                }else
                {
@@ -478,7 +478,7 @@ int main(){
                }
                
         }
-        else if(choice == 3){
+        else if(mode == 3){
             break;
         }
    }
